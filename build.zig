@@ -228,7 +228,7 @@ pub fn build(b: *std.Build) !void {
     newlib.addSystemIncludePath(b.path("newlib/libm/common"));
     newlib.addSystemIncludePath(b.path("newlib/libc/stdio"));
     newlib.addSystemIncludePath(b.path("newlib/libc/stdio/sys"));
-    newlib.defineCMacro("_LIBC", null);
+    newlib.root_module.addCMacro("_LIBC", "");
     switch (newlib.rootModuleTarget().cpu.arch) {
         .avr => {
             newlib.addAssemblyFile(b.path("newlib/libc/machine/avr/setjmp.S"));
